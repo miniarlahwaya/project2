@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nomproduit index{% endblock %}
+
+{% block body %}
+    <h1>Nomproduit index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nomp</th>
+                <th>Type</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for nomproduit in nomproduits %}
+            <tr>
+                <td>{{ nomproduit.id }}</td>
+                <td>{{ nomproduit.nomp }}</td>
+                <td>{{ nomproduit.type }}</td>
+                <td>
+                    <a href="{{ path('app_nomproduit2_show', {'id': nomproduit.id}) }}">show</a>
+                    <a href="{{ path('app_nomproduit2_edit', {'id': nomproduit.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_nomproduit2_new') }}">Create new</a>
+{% endblock %}
